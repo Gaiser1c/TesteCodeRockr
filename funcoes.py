@@ -1,13 +1,15 @@
-from datetime import date
-# Criar função para validar entrada de valores
 
+
+
+
+            # Criar função para validar entrada de valores---> OK
 def valida_valor(n):
 
     while True:
 
         if ',' in n:
             n.strip()
-            n.replace(',', '.')
+            n = n.replace(',', '.')
         else:
             n.strip()
 
@@ -33,12 +35,7 @@ def valida_valor(n):
 
 
 
-
-
-
-
-
-# Criar função pra validar números inteiros
+            # Criar função pra validar números inteiros ---> OK
 
 def valida_numero(n):
     while True:
@@ -52,7 +49,22 @@ def valida_numero(n):
 
 
 
+            # Criar uma função para calcular o imposto ---> OK
+
+def imposto(lucro, meses):
+    if meses > 24:
+        lucro = lucro - (lucro * (15/100))
+        return lucro
+
+    elif 12 <= meses <= 24:
+        lucro = lucro - (lucro * (18.5/100))
+        return lucro
+
+    else:
+        lucro = lucro - (lucro * (22.5/100))
+        return lucro
 
 
 
-print(valida_valor(str(input())))
+
+

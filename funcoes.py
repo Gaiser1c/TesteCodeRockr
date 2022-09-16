@@ -1,8 +1,8 @@
+import pendulum as pl
 
 
 
-
-            # Criar função para validar entrada de valores---> OK
+# Criar função para validar entrada de valores---> OK
 def valida_valor(n):
 
     while True:
@@ -63,6 +63,9 @@ def imposto(lucro, meses):
     else:
         lucro = lucro - (lucro * (22.5/100))
         return lucro
+
+
+
 
 
 

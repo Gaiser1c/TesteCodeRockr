@@ -1,10 +1,24 @@
 import funcoes as fc
 import pendulum as pl
 
-                                    # Gerenciamento de investimentos
+                                        #GERENCIAMENTO DE INVESTIMENTOS CODEROCKER
 
 
-        # Fazer input e validação dos dados
+
+# Variáveis
+nome = 0
+valor_investimento = 0
+data_investimento = 0
+data_saque = 0
+lucro = 0
+impostos = 0
+saldo_liquido = 0
+
+
+
+                                        # Fazer input e validação dos dados
+
+
 
             # Nome ---> OK
 
@@ -87,6 +101,7 @@ print(data_investimento)
 
 
             # Validar data de saque do investimento ---> OK
+
 print('Digite a data que deseja fazer o saque de sua aplição no formato: AAAA/MM/DD ')
 while True:
 
@@ -154,18 +169,70 @@ while True:
 data_saque = pl.date(day=dia2, month=mes2, year=ano2)
 
 
-# Calculo de quantos meses se passaram ---> OK
+
+                                        # Calculo
+
+
+
+            # Calculo de quantos meses se passaram ---> OK
 
 periodo = pl.period(data_investimento, data_saque)
 meses = - 1
 for c in periodo.range('months'):
-    print(c)
     meses += 1
 
+
+            # Calculo de Quanto o dinheiro já rendeu --->
+
 if meses <= 0:
-    print('O seu dinheiro ainda não rendeu, pos ainda não completou 1 mês!')
+    dias = pl.period(data_investimento, data_saque)
+    print(f'O seu dinheiro ainda não rendeu, pois se passaram somente {dias} dias!')
+
+else:
+    montante = valor_investimento
+    for c in range(meses):
+        montante = montante + (montante * 0.52/100)
+
+    lucro = montante - valor_investimento
+    impostos = lucro - fc.imposto(lucro, meses)
+    saldo_liquido = montante - impostos
 
 
 
-taxa = 0.52
+
+                                        # Formatação dos dados
+
+
+
+            # Agrupar os dados em um cadastro --->
+
+dados_cliente = {
+    'nome': nome,
+    'valor_investimento': valor_investimento,
+    'data_investimento': data_investimento,
+    'data_saque': data_saque,
+    'lucro': lucro,
+    'impostos': impostos,
+    'saldo_liquido': saldo_liquido
+}
+
+            # Formatar os dados para que fiquem de forma legível no terminal ---> OK
+
+
+print(f'\033[4;7m{"Banco CodeRockr":^40}\033[m')
+print('-' * 40)
+print(f'{"Dados bancários:":^40}')
+print('-' * 40)
+
+print(f'{"Nome:"} {dados_cliente["nome"]:>34}')
+print(f'{"Valor aplicado:"} {dados_cliente["valor_investimento"]:24.2f}')
+print(f'{"Data da aplicação:":<29} {dados_cliente["data_investimento"]}')
+print(f'{"Data do saque:":<29} {dados_cliente["data_saque"]}')
+print(f'{"Lucro:"} {dados_cliente["lucro"]:>33.2f}')
+print(f'{"Impostos:"} {dados_cliente["impostos"]:>30.2f}')
+print(f'{"Saldo Liquido:"} {dados_cliente["saldo_liquido"]:>25.2f}')
+
+
+
+
 

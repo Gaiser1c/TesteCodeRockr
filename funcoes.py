@@ -4,6 +4,7 @@ import pendulum as pl
 
 # Criar função para validar entrada de valores---> OK
 def valida_valor(n):
+    """ Esta função é utilizada para que apenas valores monetários válidos sejam aceitos. """
 
     while True:
 
@@ -35,9 +36,10 @@ def valida_valor(n):
 
 
 
-            # Criar função pra validar números inteiros ---> OK
+# Criar função pra validar números inteiros ---> OK
 
 def valida_numero(n):
+    """ Esta função foi criada para que apenas números inteiros sejam aceitos."""
     while True:
         try:
             n = int(n)
@@ -49,9 +51,11 @@ def valida_numero(n):
 
 
 
-            # Criar uma função para calcular o imposto ---> OK
+# Criar uma função para calcular o imposto ---> OK
 
 def imposto(lucro, meses):
+
+    """ Esta função foi criada para calcular o imposto de acordo com o tempo de investimento. """
     if meses > 24:
         lucro = lucro - (lucro * (15/100))
         return lucro
